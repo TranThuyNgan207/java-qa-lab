@@ -10,39 +10,39 @@ public class DateValidatorTest {
     DateValidator validator = new DateValidator();
 
     @Test
-    void testThang31Ngay() {
+    void shouldReturn31_WhenJan2024() {
         assertEquals(31, validator.daysInMonth(1, 2024));
     }
 
     @Test
-    void testThang30Ngay() {
+    void shouldReturn30_WhenApr2024() {
         assertEquals(30, validator.daysInMonth(4, 2024));
     }
 
     @Test
-    void testThang2NamNhuan2024() {
+    void shouldReturn29_WhenFeb2024() {
         assertEquals(29, validator.daysInMonth(2, 2024));
     }
 
     @Test
-    void testThang2TheKyKhongNhuan1900() {
+    void shouldReturn28_WhenFeb1900() {
         assertEquals(28, validator.daysInMonth(2, 1900));
     }
 
     @Test
-    void testThang2TheKyNhuan2000() {
+    void shouldReturn29_WhenFeb2000() {
         assertEquals(29, validator.daysInMonth(2, 2000));
     }
 
     @Test
-    void testThangDuoiBien0_PhaiBaoLoi() {
+    void shouldThrowException_WhenMonthIsZero() {
         assertThrows(IllegalArgumentException.class, () -> {
             validator.daysInMonth(0, 2024);
         });
     }
 
     @Test
-    void testThangVuotBien13_PhaiBaoLoi() {
+    void shouldThrowException_WhenMonthIsInvalid() {
         assertThrows(IllegalArgumentException.class, () -> {
             validator.daysInMonth(13, 2024);
         });

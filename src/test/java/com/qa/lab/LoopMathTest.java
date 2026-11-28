@@ -13,7 +13,7 @@ public class LoopMathTest {
 
     @Test
     @Timeout(value = 1, unit = TimeUnit.SECONDS)
-    void testSumBoundaries() {
+    void shouldReturnResult_WhenInputIsValid() {
         assertEquals(0, loopMath.sumToN(0));
         assertEquals(1, loopMath.sumToN(1));
         assertEquals(3, loopMath.sumToN(2));
@@ -21,7 +21,7 @@ public class LoopMathTest {
     }
 
     @Test
-    void testNegativeInputThrowsException() {
+    void shouldThrowException_WhenInputIsInvalid() {
         assertThrows(IllegalArgumentException.class, () -> {
             loopMath.sumToN(-1);
         });

@@ -9,20 +9,20 @@ public class SafeArrayReaderTest {
     SafeArrayReader reader = new SafeArrayReader();
 
     @Test
-    void testValidIndex() {
+    void shouldReturnCorrectResult_WhenInputIsValid() {
         String[] data = {"Java", "SQL", "Git"};
         assertEquals("SQL", reader.getElementSafely(data, 1));
     }
 
     @Test
-    void testNullArray() {
+    void shouldThrowException_WhenArrayIsNull() {
         assertThrows(IllegalArgumentException.class, () -> {
             reader.getElementSafely(null, 0);
         });
     }
 
     @Test
-    void testEmptyArray() {
+    void shouldThrowException_WhenArrayEmpty() {
         String[] emptyData = new String[0];
         assertThrows(IllegalArgumentException.class, () -> {
             reader.getElementSafely(emptyData, 0);
@@ -30,7 +30,7 @@ public class SafeArrayReaderTest {
     }
 
     @Test
-    void testNegativeIndex() {
+    void shouldThrowException_WhenIndexIsNegative() {
         String[] data = {"Java", "SQL"};
         assertThrows(IllegalArgumentException.class, () -> {
             reader.getElementSafely(data, -1);
@@ -38,7 +38,7 @@ public class SafeArrayReaderTest {
     }
 
     @Test
-    void testIndexEqualLength() {
+    void shouldThrowException_WhenIndexIsOutOfBounds() {
         String[] data = {"Java", "SQL"}; // length = 2
         assertThrows(IllegalArgumentException.class, () -> {
             reader.getElementSafely(data, 2);
